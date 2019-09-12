@@ -1,10 +1,21 @@
 #!/usr/bin/env python
+"""Shebang. Comment required to remove warning"""
+import unittest
+import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import time
-import unittest
+
 
 class NewVisitorTest(unittest.TestCase):
+    """Class containg functional test methods
+
+    Methods:
+        setUp -- Open a browser window
+        tearDown -- Close browser window
+    Self Documenting:
+        check_for_row_in_list_table
+        test_can_start_a_list_and_retrieve_it_later
+    """
 
     def setUp(self):
         """TODO: Docstring for setUp.
@@ -21,11 +32,19 @@ class NewVisitorTest(unittest.TestCase):
         self.browser.quit()
 
     def check_for_row_in_list_table(self, row_text):
+        """
+        Method to check for a row in a
+        list
+        """
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
-        self.assertIn(row_text,[row.text for row in rows])
+        self.assertIn(row_text, [row.text for row in rows])
 
     def test_can_start_a_list_and_retrieve_it_later(self):
+        """
+        Test to ensure a list can be created
+        and retrieved
+        """
 
         # Edith has heard about a cool new online to-do app. She goes
         # to check out its homepage
